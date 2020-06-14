@@ -36,13 +36,18 @@ export default function App() {
 
   const finishedItem = index => {
     let newTodos = [...todos];
-    newTodos[index].completed = true;
+    if(newTodos[index].completed === false) {
+      newTodos[index].completed = true;
     let shifted = newTodos.splice(index, 1);
-    console.log(...shifted);
-    console.log("after shift",newTodos);
     newTodos.push(...shifted);
-    console.log("this is the new: ", newTodos);
     setTodos(newTodos);
+    } else {
+      newTodos[index].completed = false;
+      let shifted = newTodos.splice(index, 1);
+      console.log("new shifted: ", shifted);
+      newTodos.splice(1, 0, ...shifted);
+      setTodos(newTodos);
+    } 
   }
 
   return (

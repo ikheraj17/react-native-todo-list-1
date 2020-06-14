@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, ScrollView, Text, TextInput, View } from 'react-native';
 import Todo from './components/todo'
 
 export default function App() {
@@ -13,7 +13,7 @@ export default function App() {
   const [text, setText] = useState("");
 
   const addTodo = text => {
-    const newTodos = [...todos, { text }];
+    const newTodos = [...todos, { text, completed: false }];
     const textArr = [];
     for(var i = 0; i < todos.length; i ++) {
       textArr.push(todos[i].text);
@@ -34,8 +34,6 @@ export default function App() {
     clearText();
   }
 
-  var original = 0;
-
   const finishedItem = index => {
     let newTodos = [...todos];
     if(newTodos[index].completed === false) {
@@ -51,9 +49,14 @@ export default function App() {
     } 
   }
 
+  const deleteItem = index => {
+    let newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  }
+
   return (
-    <View style={{backgroundColor: 'black', flex: 1}}>
-    <View style={{backgroundColor: 'black', justifyContent: 'center', margin: 2,}}>
+    <View style={styles.container}>
       <Text style={styles.title}>REACT NATIVE TODO LIST</Text>
       <TextInput 
         style={{height: 40, backgroundColor: 'white', margin: 30}}
@@ -63,10 +66,11 @@ export default function App() {
         placeholder={"Add a todo item here"}
         />
       {todos.map((todo, index) => (
-        <Todo index={index} key={index} todo={todo} fin={finishedItem.bind(this)}/>
+        <Todo index={index} key={index} todo={todo} fin={finishedItem.bind(this)} del={deleteItem.bind(this)}/>
       ))}
+      
     </View>
-    </View>
+    
   );
 }
 

@@ -14,6 +14,11 @@ export default function App() {
 
   const addTodo = text => {
     const newTodos = [...todos, { text }];
+    const textArr = [];
+    for(var i = 0; i < todos.length; i ++) {
+      textArr.push(todos[i].text);
+    }
+    if(textArr.includes(text)) return(alert("Todo exists!"));
     setTodos(newTodos);
   }
 

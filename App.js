@@ -34,6 +34,8 @@ export default function App() {
     clearText();
   }
 
+  var original = 0;
+
   const finishedItem = index => {
     let newTodos = [...todos];
     if(newTodos[index].completed === false) {
@@ -44,8 +46,7 @@ export default function App() {
     } else {
       newTodos[index].completed = false;
       let shifted = newTodos.splice(index, 1);
-      console.log("new shifted: ", shifted);
-      newTodos.splice(1, 0, ...shifted);
+      newTodos.splice(0, 0, ...shifted);
       setTodos(newTodos);
     } 
   }

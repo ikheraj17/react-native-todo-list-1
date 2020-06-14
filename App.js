@@ -33,6 +33,10 @@ export default function App() {
     clearText();
   }
 
+  const finishedItem = item => {
+    console.log(item);
+  }
+
   return (
     <View style={{backgroundColor: 'black', flex: 1}}>
     <View style={{backgroundColor: 'black', justifyContent: 'center', margin: 2,}}>
@@ -45,7 +49,7 @@ export default function App() {
         placeholder={"Add a todo item here"}
         />
       {todos.map((todo, index) => (
-        <Todo index={index} key={index} todo={todo}/>
+        <Todo index={index} key={index} todo={todo} fin={finishedItem.bind(this)}/>
       ))}
     </View>
     </View>

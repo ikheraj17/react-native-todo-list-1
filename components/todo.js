@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const Todo = ({ todo }) => (
+const Todo = ({ todo, fin }) => (
     <View style={styles.container}>
         
-          <Text style={styles.todo}>{todo.text}</Text>
+          <Text onPress={() => fin(todo)} style={styles.todo}>{todo.text}</Text>
     </View>
     
 )

@@ -5,9 +5,9 @@ import Todo from './components/todo'
 export default function App() {
 
   const [todos, setTodos] = useState([
-    { text: "Learn about React Native" },
-    { text: "Learn to use Hooks" },
-    { text: "Meet Judy for ice cream" }
+    { text: "Learn about React Native", completed: false },
+    { text: "Learn to use Hooks", completed: false},
+    { text: "Meet Judy for ice cream", completed: false }
   ]);
 
   const [text, setText] = useState("");
@@ -22,6 +22,7 @@ export default function App() {
     setTodos(newTodos);
   }
 
+  
   const clearText = () => {
     setText("");
   }
@@ -33,8 +34,15 @@ export default function App() {
     clearText();
   }
 
-  const finishedItem = item => {
-    console.log(item);
+  const finishedItem = index => {
+    let newTodos = [...todos];
+    newTodos[index].completed = true;
+    let shifted = newTodos.splice(index, 1);
+    console.log(...shifted);
+    console.log("after shift",newTodos);
+    newTodos.push(...shifted);
+    console.log("this is the new: ", newTodos);
+    setTodos(newTodos);
   }
 
   return (

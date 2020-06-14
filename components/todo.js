@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const Todo = ({ todo, fin }) => (
+const Todo = ({ todo, index, fin }) => (
     <View style={styles.container}>
         
-          <Text onPress={() => fin(todo)} style={styles.todo}>{todo.text}</Text>
+          <Text onPress={() => fin(index)} style={todo.completed ? styles.complete : styles.todo}>{todo.text}</Text>
     </View>
     
 )
@@ -24,6 +24,15 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         padding: 10,
     },
+    complete: {
+        fontStyle: 'italic',
+        fontWeight: '500',
+        margin: 5,
+        backgroundColor: 'aqua',
+        borderRadius: 15,
+        padding: 10,
+        textDecorationLine: 'line-through',
+    }
   });
 
 export default Todo;

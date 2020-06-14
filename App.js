@@ -34,8 +34,9 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>REACT NATIVE TODO LIST APP</Text>
+    <View style={{backgroundColor: 'black', flex: 1}}>
+    <View style={{backgroundColor: 'black', justifyContent: 'center', margin: 2,}}>
+      <Text style={styles.title}>REACT NATIVE TODO LIST</Text>
       <TextInput 
         style={{height: 40, backgroundColor: 'white', margin: 30}}
         value={text}
@@ -44,8 +45,9 @@ export default function App() {
         placeholder={"Add a todo item here"}
         />
       {todos.map((todo, index) => (
-        <Todo style={styles.todo} index={index} key={index} todo={todo}/>
+        <Todo index={index} key={index} todo={todo}/>
       ))}
+    </View>
     </View>
   );
 }

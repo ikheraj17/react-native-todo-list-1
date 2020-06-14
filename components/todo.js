@@ -8,7 +8,11 @@ const Todo = ({ todo }) => (
 const styles = StyleSheet.create({
     todo: {
         fontStyle: 'italic',
+        fontWeight: '500',
         margin: 10,
+        backgroundColor: 'aqua',
+        borderRadius: 15,
+        padding: 10,
     }
   });
 
